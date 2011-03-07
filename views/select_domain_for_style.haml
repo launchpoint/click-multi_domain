@@ -1,0 +1,24 @@
+.panel
+  .body
+    -if($curdomain != null)
+      %input{:id=>'curdomain',:value=>$curdomain,:style=>'display: none;'}
+    -else
+      %input{:id=>'curdomain',:value=>'-1',:style=>'display: none;'}
+    =select_tag("currentdomain",$domains,$curdomain,'id','title','<option value="-1"></option>','id','domainselection')
+    %br
+    %br
+:js
+  function selectDomain()
+  {
+    var id_domain = $('#domainselection').val();
+    var id_curdomain = $('#curdomain').val();
+    if(id_domain >= 0 && id_domain != id_curdomain)
+    {
+      window.location = '/domains/site/style/' + id_domain;
+    }
+  }    
+  $(document).ready(function() {      
+    $('#domainselection').change(function() {    
+      selectDomain();    
+    });
+  });

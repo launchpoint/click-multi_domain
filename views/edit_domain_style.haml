@@ -1,0 +1,9 @@
+.panel
+  .title
+    =se("Edit Domain Style")
+    +$d->name
+  .instructions
+    =se("Style editing instructions")
+  .body
+    =button_to('back to list', admin_domain_list_url());
+    -event('domain_style_editor', array('domain'=>$d))

@@ -1,0 +1,11 @@
+-add_breadcrumb('Manage Domains', manage_domains_url())
+%table
+  %tr
+    %th =se("Domain Name")
+  -foreach($domains as $domain)
+    %tr
+      %td
+        +$domain->title
+      %td
+        =button_to('Styling', manage_domain_style_url($domain))
+        =button_to('Menus', manage_domain_menus_url($domain))
